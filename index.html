@@ -18,7 +18,7 @@ margin-right: auto; border: 2px solid black; border-radius: 5px;">
         <input type="number" class="form-control" id="valor">
       </div>
       <div class="form-group">
-        <label style= color:black; for="unidade-entrada">Unidade de entrada:</label>
+        <label style= color:black; for="unidade-entrada">Quero Converter:</label>
         <select class="form-control" id="unidade-entrada">
           <option value="metros">Metros</option>
           <option value="quilometros">Quilômetros</option>
@@ -26,8 +26,8 @@ margin-right: auto; border: 2px solid black; border-radius: 5px;">
         </select>
       </div>
       <div class="form-group">
-        <label style= color:black; for="unidade-saida">Unidade de saída:</label>
-        <select class="form-control" id="unidade-saida">
+        <label style= color:black; for="unidade-convertida">Para:</label>
+        <select class="form-control" id="unidade-convertida">
           <option value="metros">Metros</option>
           <option value="quilometros">Quilômetros</option>
           <option value="pes">Pés</option>
@@ -45,18 +45,18 @@ margin-right: auto; border: 2px solid black; border-radius: 5px;">
 
 </html>
 <script>
-  function converterUnidades(valor, unidadeEntrada, unidadeSaida) {
-    if (unidadeEntrada === "metros" && unidadeSaida === "quilometros") {
+  function converterUnidades(valor, unidadeEntrada, unidadeconvertida) {
+    if (unidadeEntrada === "metros" && unidadeconvertida === "quilometros") {
       return valor / 1000;
-    } else if (unidadeEntrada === "metros" && unidadeSaida === "pes") {
+    } else if (unidadeEntrada === "metros" && unidadeconvertida === "pes") {
       return valor * 3.28084;
-    } else if (unidadeEntrada === "quilometros" && unidadeSaida === "metros") {
+    } else if (unidadeEntrada === "quilometros" && unidadeconvertida === "metros") {
       return valor * 1000;
-    } else if (unidadeEntrada === "quilometros" && unidadeSaida === "pes") {
+    } else if (unidadeEntrada === "quilometros" && unidadeconvertida === "pes") {
       return valor * 3280.84;
-    } else if (unidadeEntrada === "pes" && unidadeSaida === "metros") {
+    } else if (unidadeEntrada === "pes" && unidadeconvertida === "metros") {
       return valor / 3.28084;
-    } else if (unidadeEntrada === "pes" && unidadeSaida === "quilometros") {
+    } else if (unidadeEntrada === "pes" && unidadeconvertida === "quilometros") {
       return valor / 3280.84;
     } else {
       return valor;
@@ -65,17 +65,17 @@ margin-right: auto; border: 2px solid black; border-radius: 5px;">
   const botaoConverter = document.getElementById("converter");
   const valorInput = document.getElementById("valor");
   const unidadeEntradaSelect = document.getElementById("unidade-entrada");
-  const unidadeSaidaSelect = document.getElementById("unidade-saida");
+  const unidadeconvertidaSelect = document.getElementById("unidade-convertida");
   const resultadoP = document.getElementById("resultado");
 
   botaoConverter.addEventListener("click", function () {
     const valor = parseFloat(valorInput.value);
     const unidadeEntrada = unidadeEntradaSelect.value;
-    const unidadeSaida = unidadeSaidaSelect.value;
+    const unidadeconvertida = unidadeconvertidaSelect.value;
 
-    const valorConvertido = converterUnidades(valor, unidadeEntrada, unidadeSaida);
+    const valorConvertido = converterUnidades(valor, unidadeEntrada, unidadeconvertida);
 
-    resultadoP.innerHTML = `${valor} ${unidadeEntrada} é igual a ${valorConvertido} ${unidadeSaida}`;
+    resultadoP.innerHTML = `${valor} ${unidadeEntrada} é igual a ${valorConvertido} ${unidadeconvertida}`;
   });
 
 </script>
